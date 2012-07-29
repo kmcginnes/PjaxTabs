@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Foo";
+}
+
+<h2>Foo</h2>
+
+<ul>
+    <li><a class="tabs" href="@Url.Action("Bar", "Foo")">Bar</a></li>
+    <li><a class="tabs" href="@Url.Action("Baz", "Foo")">Baz</a></li>
+</ul>
+<div id="tab_content">
+    @if(ViewBag.SelectedTab == "Bar")
+    {
+        @Html.Partial("Bar")
+    }
+    @if (ViewBag.SelectedTab == "Baz")
+    {
+        @Html.Partial("Baz")
+    }
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            $(".tabs").pjax("#tab_content");
+        })
+    </script>
+}
